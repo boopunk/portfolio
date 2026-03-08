@@ -27,7 +27,7 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   margin: 0;
 }
 
@@ -171,6 +171,7 @@ button:focus {
 
 .home__description {
   font-size: 1.3rem;
+  font-weight: 100;
 }
 
 .home__contact {
@@ -255,9 +256,12 @@ button:focus {
   margin: 2rem 3rem;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
     0 100px 80px rgba(0, 0, 0, 0.12);
 }
 
@@ -399,7 +403,7 @@ button:focus {
 }
 
 .project__title:after {
-  content: '';
+  content: "";
   display: block;
   position: relative;
   left: 50%;
@@ -575,3 +579,80 @@ button:focus {
     right: 1.5rem;
   }
 }
+
+/* 모달 배경 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* 모달 메인 박스 */
+.modal-content {
+  position: relative;
+  margin: 2vh auto;
+  width: 90%;
+  height: 95vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 닫기 버튼 */
+.close-button {
+  position: absolute;
+  top: -40px; right: 0;
+  color: white; font-size: 35px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* 내부 레이아웃 */
+.modal-body {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+/* 왼쪽 사이드바 */
+.modal-sidebar {
+  width: 220px;
+  background-color: #f8f9fa;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+/* 뷰어 컨테이너 (오른쪽 스크롤 영역) */
+.modal-viewer {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;         /* 이미지가 길면 여기서 스크롤 발생 */
+  overflow-x: hidden;       /* 가로 스크롤은 차단 */
+  background-color: #1a1a1a;
+  display: block;           /* 이미지가 상단부터 배치되도록 설정 */
+}
+
+/* 이미지 스타일: 가로 꽉 채우고 비율 유지 */
+#imgViewer {
+  width: 100% !important;   /* 가로폭 고정 */
+  height: auto !important;  /* 높이는 비율에 맞춰 자동 확장 */
+  display: none;
+  margin: 0 auto;
+  padding: 0;
+  object-fit: contain;      /* 비율 유지 보장 */
+}
+
+/* PDF 스타일 */
+#pdfViewer {
+  width: 100%;
+  height: 100%;
+  display: none;
+  border: none;
+}
+
+
